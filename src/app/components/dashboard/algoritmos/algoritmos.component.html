@@ -1,0 +1,56 @@
+<div class="mainTable">
+  <h1 class="tituloTabla">{{parametro}}</h1>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="case" class="casos">
+      <th mat-header-cell *matHeaderCellDef>Caso</th>
+      <td mat-cell *matCellDef="let element" class="custom-td"> {{element.nombreAlg}} </td>
+    </ng-container>
+    
+    <!-- Name Column -->
+    <ng-container matColumnDef="imgAlg" class="casos">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element" (click)="openOverlay(element)" class="custom-td imgAlgCheck">
+        <input type="hidden" [value]="element.algoritmo" class="algHidden">
+        <!-- <img src="ruta/imagen.png"(click)="openOverlay(element)"/> -->
+      </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="alg" class="casos">
+      <th mat-header-cell *matHeaderCellDef>Algoritmo</th>
+      <td mat-cell *matCellDef="let element" class="custom-td"> {{element.algoritmo}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+<div class="overlay" *ngIf="isOverlayOpen" (click)="closeOverlay()">
+  <!-- Content -->
+  <div class="overlay-content" (click)="stopPropagation($event)">
+    <!-- Header -->
+    <div class="overlay-header">
+      <h2>{{ selectedElement.nombreAlg }}</h2>
+    </div>
+
+    <!-- Body -->
+    <div class="overlay-body">
+
+      <!-- Data -->
+      <div class="overlay-data">
+        <h3 class="tituloOtrosAlgs"><b>Otros Algoritmos menos útiles</b></h3>
+        <div class="otrosAlgoritmos" *ngFor="let item of selectedElement.algoritmosPosibles | keyvalue; let i = index">
+          <!-- <p>Clave: {{ item.key }}</p> -->
+          <p>- {{ item.value }} -</p>
+        </div>
+      </div>
+    </div>
+    <!-- Close Button -->
+    <button class="overlay-close" (click)="closeOverlay()">Cerrar</button>
+  </div>
+</div>

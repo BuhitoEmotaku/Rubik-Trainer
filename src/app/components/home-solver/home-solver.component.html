@@ -1,0 +1,167 @@
+
+<div class="twoSizesCube">
+	<div class="cube">
+		
+		<div class="main">
+			<div class="container exp">
+				<div class="piece col1" id="color1"></div>
+				<div class="piece col2" id="color2"></div>
+				<div class="piece col3" id="color3"></div>
+				<div class="piece col4" id="color4"></div>
+				<div class="piece col5" id="color5"></div>
+				<div class="piece col6" id="color6"></div>
+				<div class="piece col7" id="color7"></div>
+				<div class="piece col8" id="color8"></div>
+				<div class="piece col9" id="color9"></div>
+			</div>
+			<div class="cuadrados">
+				<div class="container">
+					<div class="piece col1" id="color10"></div>
+					<div class="piece col2" id="color11"></div>
+					<div class="piece col3" id="color12"></div>
+					<div class="piece col4" id="color13"></div>
+					<div class="piece col5" id="color14"></div>
+					<div class="piece col6" id="color15"></div>
+					<div class="piece col7" id="color16"></div>
+					<div class="piece col8" id="color17"></div>
+					<div class="piece col9" id="color18"></div>
+				</div>
+				<div class="container">
+					<div class="piece col1" id="color19"></div>
+					<div class="piece col2" id="color20"></div>
+					<div class="piece col3" id="color21"></div>
+					<div class="piece col4" id="color22"></div>
+					<div class="piece col5" id="color23"></div>
+					<div class="piece col6" id="color24"></div>
+					<div class="piece col7" id="color25"></div>
+					<div class="piece col8" id="color26"></div>
+					<div class="piece col9" id="color27"></div>
+				</div>
+				<div class="container">
+					<div class="piece col1" id="color28"></div>
+					<div class="piece col2" id="color29"></div>
+					<div class="piece col3" id="color30"></div>
+					<div class="piece col4" id="color31"></div>
+					<div class="piece col5" id="color32"></div>
+					<div class="piece col6" id="color33"></div>
+					<div class="piece col7" id="color34"></div>
+					<div class="piece col8" id="color35"></div>
+					<div class="piece col9" id="color36"></div>
+				</div>
+				<div class="container">
+					<div class="piece col1" id="color37"></div>
+					<div class="piece col2" id="color38"></div>
+					<div class="piece col3" id="color39"></div>
+					<div class="piece col4" id="color40"></div>
+					<div class="piece col5" id="color41"></div>
+					<div class="piece col6" id="color42"></div>
+					<div class="piece col7" id="color43"></div>
+					<div class="piece col8" id="color44"></div>
+					<div class="piece col9" id="color45"></div>
+				</div>
+			</div>
+			<div class="container exp">
+				<div class="piece col2" id="color46"></div>
+				<div class="piece col3" id="color47"></div>
+				<div class="piece col4" id="color48"></div>
+				<div class="piece col5" id="color49"></div>
+				<div class="piece col6" id="color50"></div>
+				<div class="piece col7" id="color51"></div>
+				<div class="piece col8" id="color52"></div>
+				<div class="piece col9" id="color53"></div>
+				<div class="piece col9" id="color54"></div>
+			</div>
+		</div>
+		<div class="coloresCheck">
+			<div class="seleccionador">
+				<div id="color-picker">
+					<div class="color" style="background-color: #ff0000;"></div>
+					<div class="color" style="background-color: #00ff00;"></div>
+					<div class="color" style="background-color: #ff7509;"></div>
+					<div class="color" style="background-color: #0927ff;"></div>
+					<div class="color" style="background-color: #ffff00;"></div>
+					<div class="color" style="background-color: #ffffff;"></div>
+				</div>
+				<div id="target" style="width: 100px; height: 100px; background-color: #ffffff;"></div>
+			</div>
+			
+			<h1 class="cubosGuardados">Elige uno de tus cubos guardados!</h1>
+			<mat-select [value]="selectedOptionList" (selectionChange)="onElegirCuboLista($event)" *ngIf="cubeListBoolean; else elseCubeList">
+				<mat-placeholder><b>Elige un cubo!</b></mat-placeholder>
+				<mat-option class="opcionElegir" *ngFor="let option of cubeList; let index = index;" [value]="option">
+				  <div class="option-content">
+					<b>Cubo nº {{index + 1}}</b>
+				  </div>
+				</mat-option>
+			  </mat-select>			  
+		  <ng-template #elseCubeList>
+			<h2>0 Cubos Guardados!</h2>
+		  </ng-template>
+		  <div class="herramietasCubo">
+			<div class="listaCubos">
+				<button style="background-color: rgb(252, 119, 252);"  (click)="guardarCubeState()" class="solucionesButton round-button" mat-raised-button
+					color="primary">Guardar Cubo <mat-icon>offline_pin</mat-icon></button>
+			</div>
+			<div class="listaCubos">
+				<button style="background-color: rgb(255, 62, 62);"  (click)="borrarCubo()" class="solucionesButton round-button" mat-raised-button
+					color="primary">Borrar Cubo <mat-icon>delete</mat-icon></button>
+			</div>
+		  </div>
+
+		<div class="solve">
+			<button style="background-color: rgb(255, 146, 22);"  (click)="scrambleRandCube()" class="solucionesButton round-button" mat-raised-button
+				color="primary" id="slv">SCRAMBLE RANDOM <mat-icon>touch_app</mat-icon></button>
+		</div>
+		</div>
+		
+		
+	</div>
+	<div class="main2" id="main2">
+		<p></p><p></p>
+		<h1>¡Elige con que mano resolver!</h1>
+		<mat-select [value]="tipoMano" (selectionChange)="onOptionChangeMano($event)">
+			<mat-option class="opcionElegir" *ngFor="let option of optionsMano" [value]="option">
+			  <div class="option-content">
+				<b>{{ option }}</b>
+			  </div>
+			</mat-option>
+		  </mat-select>
+		  
+		<h1>¡Elige la cara para resolver!</h1>
+		<mat-select [value]="selectedOption" (selectionChange)="onOptionChange($event)">
+			<mat-option class="opcionElegir" *ngFor="let option of options" [value]="option">
+			  <div class="option-content">
+				<b>{{ option }}</b>
+			  </div>
+			</mat-option>
+		</mat-select>
+		  
+		<h1>SOLUCIÓN / FRIDRICH - CFOP</h1>
+		<div class="solve">
+			<button style="background-color: rgb(93, 240, 93);"  (click)="crearAlg('')" class="solucionesButton round-button" mat-raised-button
+				color="primary" id="slv">SOLUCIÓN 4 PASOS <mat-icon>touch_app</mat-icon></button>
+		</div>
+		<h1>SOLUCIÓN ÓPTIMA</h1>
+		<div class="random">
+			<button style="background-color: yellow;" class="round-button" mat-raised-button color="primary" id="rand"
+				(click)="kociembaSolve()">SOLUCIÓN 1 PASO <mat-icon>touch_app</mat-icon></button>
+		</div>
+
+		<button style="background-color: rgb(32, 32, 32); color:white; margin-bottom: 10px; padding: 10px;" *ngIf="strSolu[0] != ''"
+			mat-raised-button color="primary" (click)="actsoluCompl()">SOLUCIÓN COMPLETA</button>
+		<button style="background-color: rgb(61, 153, 0)(40, 70, 23); color:white; margin-bottom: 10px;" *ngIf="strCross[0] != ''"
+			mat-raised-button color="primary" (click)="actCROSS()">CROSS</button>
+		<button style="background-color: rgb(61, 153, 0); color:white; margin-bottom: 10px;" *ngIf="strF2L1[0] != ''"
+			mat-raised-button color="primary" (click)="actF2L1()">F2L 1</button>
+		<button style="background-color: rgb(61, 153, 0); color:white; margin-bottom: 10px;" *ngIf="strF2L2[0] != ''"
+			mat-raised-button color="primary" (click)="actF2L2()">F2L 2</button>
+		<button style="background-color: rgb(61, 153, 0); color:white; margin-bottom: 10px;" *ngIf="strF2L3[0] != ''"
+			mat-raised-button color="primary" (click)="actF2L3()">F2L 3</button>
+		<button style="background-color: rgb(61, 153, 0); color:white; margin-bottom: 10px;" *ngIf="strF2L4[0] != ''"
+			mat-raised-button color="primary" (click)="actF2L4()">F2L 4</button>
+		<button style="background-color: rgb(243, 105, 13); color:white; margin-bottom: 10px;" *ngIf="strOLL[0] != ''"
+			mat-raised-button color="primary" (click)="actOLL()">OLL</button>
+		<button style="background-color: rgb(243, 14, 14); color:white; margin-bottom: 10px;" *ngIf="strPLL[0] != ''"
+			mat-raised-button color="primary" (click)="actPLL()">PLL</button>
+	</div>
+</div>

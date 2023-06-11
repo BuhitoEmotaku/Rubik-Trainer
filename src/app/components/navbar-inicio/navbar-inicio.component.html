@@ -1,0 +1,17 @@
+<mat-toolbar color="accent" style="background-color: #a0a0a0ba;" id="my-first">
+    <ul>
+      <li class="logotype">
+        <b class="titleLeft">Rubik Trainer</b>
+      </li>
+      <li class="burger" (click)="toggleMenu()">
+        <i class="material-icons">{{ isMenuRespon ? "close" : "menu" }}</i>
+      </li>
+      <li class="menu" [class.is-open]="isMenuRespon">
+        <button (click)="toggleMenuItems()" class="menu-item presentacion" mat-button routerLink="/inicio">Presentación</button>
+        <div class="logRegDiv">
+            <button (click)="toggleMenuItems()" class="menu-item log" mat-button routerLink="/login">Login &nbsp; / </button>
+        <button class="menu-item reg" mat-button routerLink="/register"> \ &nbsp; Registro</button>
+        </div>
+        </li>
+    </ul>
+    

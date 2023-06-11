@@ -1,0 +1,85 @@
+<div class="mainT">
+  <div class="headerTimer" *ngIf="mostrarScramble"><b id="MezclaTimer">{{mezcla}}</b></div>
+  <div class="headerTimer2" *ngIf="!mostrarScramble"></div>
+
+  <div class="opciones">
+    <!-- <div class="opcion">
+      <mat-icon>settings</mat-icon>
+    </div> -->
+    <div class="logo">
+      <span></span>
+    </div>
+
+    <div class="mostrarObjetos">
+      <div class="mostrarLista" (click)="toggleTiempos()"><img src="assets/img/listaImg.png"></div>
+      <div class="mostrarMezcla" (click)="toggleMezcla()"><img src="assets/img/mezclaImg.png"></div>
+      <div class="mostrarScramble" (click)="toggleScramble()"><img src="assets/img/scrambleImg.png"></div>
+    </div>
+
+    <div class="tiempos" *ngIf="mostrarTiempos">
+      <br>
+      <h2><b>Tiempos guardados</b></h2>
+
+      <div class="tableWrapper">
+        <table class="tableTiempos">
+          <thead>
+            <tr>
+              <th>Número</th>
+              <th>Tiempo</th>
+              <th>Media de 5</th>
+              <th>Media de 12</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let tiempo of tiempos.slice().reverse(); let i = index" (click)="openOverlay(i)">
+              <input type="hidden" [value]="i" class="tiempoHidden">
+              <td>{{ tiempos.length - i }}</td>
+              <td>{{ tiempo['tiempo'] }}</td>
+              <td>{{ calcularMedia(5, tiempos.length - i - 1) }}</td>
+              <td>{{ calcularMedia(12, tiempos.length - i - 1) }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>      
+    </div>
+  </div>
+</div>
+
+
+<!-- Componente TimerComponent -->
+<div class="mainTimer">
+  <div class="timer">
+    <div class="tiempo" [ngStyle]="{ 'color': tiempoColor }"
+      (keypress.space)="cronometro.tiempoIniciado ? cronometro.detener() : cronometro.iniciar()" tabindex="0">
+      {{ tiempoTranscurrido }}
+    </div>
+    <div class="medias">
+      <div class="mediaCinco"><h1><b>ao5: {{ao5}}</b></h1></div>
+      <div class="mediaDoce"><h1><b>ao12: {{ao12}}</b></h1></div>
+    </div>
+    <div id="canvasScramble" [style.visibility]="mostrarMezcla ? 'visible' : 'hidden'"></div>
+  </div>
+</div>
+
+<div class="overlay" *ngIf="isOverlayOpen" (click)="closeOverlay()">
+  <!-- Content -->
+  <div class="overlay-content" (click)="stopPropagation($event)">
+    <!-- Header -->
+    <div class="overlay-header">
+      <h2>Tiempo nº {{tiempos.length - selectedElement}}</h2>
+      <h2>{{ tiempos[tiempos.length - selectedElement - 1]['tiempo'] }}</h2>
+      <h2>SCRAMBLE</h2>
+      <h2>{{ tiempos[tiempos.length - selectedElement - 1]['mezcla'] }}</h2>
+    </div>
+
+    <!-- Body -->
+    <div class="overlay-body">
+
+      <!-- Data -->
+      <div class="overlay-data">
+        <button style="background-color: rgb(250, 0, 0);" (click)="borrarTiempo()" class="solucionesButton round-button" mat-raised-button
+				color="primary" id="slv">Eliminar Tiempo<mat-icon>delete</mat-icon></button>
+    </div>
+    <!-- Close Button -->
+    <button class="overlay-close" (click)="closeOverlay()">Cerrar</button>
+  </div>

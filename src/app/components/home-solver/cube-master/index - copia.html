@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Cara de Cubo de Rubik en 2D</title>
+	<style type="text/css">
+		body {
+			background-color: #e9e9e9;
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+		}
+
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			width: 150px;
+			height: 160px;
+			background-color: white;
+
+		}
+
+		.piece {
+			width: 40px;
+			height: 40px;
+			margin: 2px;
+			border: 1px solid black;
+		}
+
+		.col1 {
+			float: left;
+			background-color: red;
+		}
+
+		.col2 {
+			float: left;
+			background-color: white;
+		}
+
+		.col3 {
+			float: left;
+			background-color: blue;
+		}
+
+		.col4 {
+			float: left;
+			background-color: white;
+		}
+
+		.col5 {
+			float: left;
+			background-color: green;
+		}
+
+		.col6 {
+			float: left;
+			background-color: white;
+		}
+
+		.col7 {
+			float: left;
+			background-color: orange;
+			clear: right;
+		}
+
+		.col8 {
+			float: left;
+			background-color: white;
+		}
+
+		.col9 {
+			float: left;
+			background-color: yellow;
+		}
+
+		#color-picker {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+			margin-bottom: 20px;
+		}
+
+		.color {
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			cursor: pointer;
+			border: 1px solid black;
+		}
+
+		#target {
+			margin-top: 20px;
+			border: 1px solid black;
+		}
+
+		.coloresCheck {
+			width: 600px;
+			height: 200px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.cuadrados {
+			display: flex;
+			flex-direction: row;
+
+		}
+
+		.main {
+			display: flex;
+			flex-direction: column;
+			align-content: center;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.exp {
+			padding-right: 150px;
+		}
+
+		#color1,
+		#color2,
+		#color3,
+		#color4,
+		#color5,
+		#color6,
+		#color7,
+		#color8,
+		#color9 {
+			background-color: #ffffff;
+		}
+
+		#color10,
+		#color11,
+		#color12,
+		#color13,
+		#color14,
+		#color15,
+		#color16,
+		#color17,
+		#color18 {
+			background-color: #ff7509;
+		}
+
+		#color19,
+		#color20,
+		#color21,
+		#color22,
+		#color23,
+		#color24,
+		#color25,
+		#color26,
+		#color27 {
+			background-color: #00ff00;
+		}
+
+		#color28,
+		#color29,
+		#color30,
+		#color31,
+		#color32,
+		#color33,
+		#color34,
+		#color35,
+		#color36 {
+			background-color: #0927ff;
+		}
+
+		#color37,
+		#color38,
+		#color39,
+		#color40,
+		#color41,
+		#color42,
+		#color43,
+		#color44,
+		#color45 {
+			background-color: #ff0000;
+		}
+
+		#color46,
+		#color47,
+		#color48,
+		#color49,
+		#color50,
+		#color51,
+		#color52,
+		#color53,
+		#color54 {
+			background-color: #ffff00;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="main">
+		<div class="container exp">
+			<div class="piece col1" id="color1"></div>
+			<div class="piece col2" id="color2"></div>
+			<div class="piece col3" id="color3"></div>
+			<div class="piece col4" id="color4"></div>
+			<div class="piece col5" id="color5"></div>
+			<div class="piece col6" id="color6"></div>
+			<div class="piece col7" id="color7"></div>
+			<div class="piece col8" id="color8"></div>
+			<div class="piece col9" id="color9"></div>
+		</div>
+		<div class="cuadrados">
+			<div class="container">
+				<div class="piece col1" id="color10"></div>
+				<div class="piece col2" id="color11"></div>
+				<div class="piece col3" id="color12"></div>
+				<div class="piece col4" id="color13"></div>
+				<div class="piece col5" id="color14"></div>
+				<div class="piece col6" id="color15"></div>
+				<div class="piece col7" id="color16"></div>
+				<div class="piece col8" id="color17"></div>
+				<div class="piece col9" id="color18"></div>
+			</div>
+			<div class="container">
+				<div class="piece col1" id="color19"></div>
+				<div class="piece col2" id="color20"></div>
+				<div class="piece col3" id="color21"></div>
+				<div class="piece col4" id="color22"></div>
+				<div class="piece col5" id="color23"></div>
+				<div class="piece col6" id="color24"></div>
+				<div class="piece col7" id="color25"></div>
+				<div class="piece col8" id="color26"></div>
+				<div class="piece col9" id="color27"></div>
+			</div>
+			<div class="container">
+				<div class="piece col2" id="color28"></div>
+				<div class="piece col3" id="color29"></div>
+				<div class="piece col4" id="color30"></div>
+				<div class="piece col5" id="color31"></div>
+				<div class="piece col6" id="color32"></div>
+				<div class="piece col7" id="color33"></div>
+				<div class="piece col8" id="color34"></div>
+				<div class="piece col9" id="color35"></div>
+				<div class="piece col1" id="color36"></div>
+			</div>
+			<div class="container">
+				<div class="piece col2" id="color37"></div>
+				<div class="piece col3" id="color38"></div>
+				<div class="piece col4" id="color39"></div>
+				<div class="piece col5" id="color40"></div>
+				<div class="piece col6" id="color41"></div>
+				<div class="piece col7" id="color42"></div>
+				<div class="piece col8" id="color43"></div>
+				<div class="piece col9" id="color44"></div>
+				<div class="piece col1" id="color45"></div>
+			</div>
+		</div>
+		<div class="container exp">
+			<div class="piece col2" id="color46"></div>
+			<div class="piece col3" id="color47"></div>
+			<div class="piece col4" id="color48"></div>
+			<div class="piece col5" id="color49"></div>
+			<div class="piece col6" id="color50"></div>
+			<div class="piece col7" id="color51"></div>
+			<div class="piece col8" id="color52"></div>
+			<div class="piece col9" id="color53"></div>
+			<div class="piece col9" id="color54"></div>
+		</div>
+	</div>
+	<div class="coloresCheck">
+		<div id="color-picker">
+			<div class="color" style="background-color: #ff0000;"></div>
+			<div class="color" style="background-color: #00ff00;"></div>
+			<div class="color" style="background-color: #ff7509;"></div>
+			<div class="color" style="background-color: #0927ff;"></div>
+			<div class="color" style="background-color: #ffff00;"></div>
+			<div class="color" style="background-color: #ffffff;"></div>
+		</div>
+		<div id="target" style="width: 100px; height: 100px; background-color: #ffffff;"></div>
+		<div class="solve"><button id="slv">SOLVE</button></div>
+		<div class="random"><button id="rand">RANDOM</button></div>
+	</div>
+
+
+	<script>
+		const colors = document.querySelectorAll('.color');
+		const target = document.getElementById('target');
+		colors.forEach(color => {
+			color.addEventListener('click', () => {
+				target.style.backgroundColor = color.style.backgroundColor;
+			});
+		});
+		window.onclick = e => {
+			if (e.target.id != null && e.target.id !== "" && e.target.id != "color50"
+			&& e.target.id != "color41" && e.target.id != "color32" && e.target.id != "color23"
+			&& e.target.id != "color14" && e.target.id != "color5") {
+				document.getElementById(e.target.id).style.backgroundColor = document.getElementById("target").style.backgroundColor;
+			}
+		};
+		colores = {"#ff0000": "u", "#00ff00": "f", "#ff7509": "l","#0927ff": "b","#ffff00": "d","#ffffff": "r"};
+		
+		
+		document.getElementById("slv").addEventListener("click", function() {
+			total = "";
+  			for (var i = 1; i < 55; i++){
+				const miElemento = document.getElementById(`color${i}`);
+				// Obtiene el valor de "background-color" usando el método "getComputedStyle"
+				const valorBG = window.getComputedStyle(miElemento).getPropertyValue("background-color");
+				const rgbArray = valorBG.replace(/[^\d,]/g, "").split(",");
+				const hexValue = "#" + ((1 << 24) + (parseInt(rgbArray[0]) << 16) + (parseInt(rgbArray[1]) << 8) + parseInt(rgbArray[2])).toString(16).slice(1);
+				total += colores[`${hexValue}`]
+			}
+			console.log(total);
+		});
+		document.getElementById("rand").addEventListener("click", function() {
+  		alert("a!");
+		});
+		const spawnner = require('child_process').spawn;
+const variable = 'UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB';
+const data_to_pass_in = {
+  data_sent: 'Send this to python script',
+  data_received: 'undefined'
+};
+console.log('Data sent to py script ' + data_to_pass_in.data);
+const python_process = spawnner('python', [ './test.py' , JSON.stringify(data_to_pass_in)]);
+python_process.stdout.on('data', (data) => {
+  console.log('Data received from python script ' , JSON.parse(data.toString()));
+});
+	</script>
+</body>
+
+</html>

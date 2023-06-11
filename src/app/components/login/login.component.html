@@ -1,0 +1,56 @@
+
+<app-navbar-inicio></app-navbar-inicio>
+<div class="mainLogin">
+    <mat-spinner *ngIf="loader" diameter="60"></mat-spinner>
+    <form *ngIf="!loader" [formGroup]="form" (ngSubmit)="loguear()" class="formulario">
+        <h1><b>Login</b></h1>
+        <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Usuario</mat-label>
+            <input matInput autocomplete="off" formControlName="usuario">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="ancho">
+            <mat-label>Contraseña</mat-label>
+            <input type="password" matInput autocomplete="off" formControlName="password">
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="accent" class="ancho submit" [disabled]="form.invalid">Submit</button>
+    </form>
+    <b *ngIf="logOcult" style="color: rgb(197, 46, 243); cursor: pointer;" (click)="recuperarContrase()">Olvidaste tu contraseña?</b>
+        
+
+     <mat-form-field *ngIf="recContrasena" appearance="fill" class="ancho">
+        <mat-label>Email:</mat-label>
+        <input matInput autocomplete="off" id="emailRecuperarContra" class="ancho" required><br>
+    </mat-form-field>
+    <button type="text" (click)="recuperarContrase()" *ngIf="recContrasena" style="background-color: rgb(255, 153, 0);" class="solucionesButton round-button" mat-raised-button
+     color="primary">Recuperar Contraseña! <mat-icon>touch_app</mat-icon></button>
+
+
+     <mat-form-field *ngIf="codigoContrasena" appearance="fill" class="ancho">
+        <mat-label>Contraseña Nueva:</mat-label>
+        <input matInput autocomplete="off" id="contrasenaNueva" class="ancho" required><br>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="codigoContrasena" appearance="fill" class="ancho">
+        <mat-label>Código Email:</mat-label>
+        <input matInput autocomplete="off" id="token" class="ancho" required><br>
+    </mat-form-field>
+
+    <button  type="text" (click)="codigoContrasenaM()" *ngIf="codigoContrasena" style="background-color: rgb(255, 153, 0);" class="solucionesButton round-button" mat-raised-button
+     color="primary">Cambiar Contraseña! <mat-icon>touch_app</mat-icon></button>
+
+
+        <button *ngIf="logOcult" style="background-color: rgb(255, 22, 22);"  class="solucionesButton round-button register" routerLink="/register" mat-raised-button
+     color="primary" id="slv">Registrate! <mat-icon>touch_app</mat-icon></button>
+
+
+     
+</div>
+    <!-- Footer with Navigation -->
+    <footer class="my-footer">
+        <div class="container">
+            <div class="site-info">
+                © 2023 <a href="javascript:void(0);"><strong><b>Rubik Trainer</b></strong></a>
+            </div>
+        </div>
+    </footer>
+    

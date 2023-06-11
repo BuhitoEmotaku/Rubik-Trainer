@@ -1,0 +1,20 @@
+<app-navbar-inicio></app-navbar-inicio>
+<div class="espacioPrese"><h1 class="soloVisualizacion"><b>- Esto solo es una VISUALIZACIÓN del contenido real de la página -</b></h1></div>
+<div class="slider-container">
+  <div class="slider-track" [ngStyle]="getSlideStyle()"
+    (mousedown)="onDragStart($event)" (touchstart)="onDragStart($event)"
+    (mousemove)="onDragMove($event)" (touchmove)="onDragMove($event)"
+    (mouseup)="onDragEnd($event)" (touchend)="onDragEnd($event)" #sliderTrack>
+    <div class="slider-slide" *ngFor="let slide of carouselSlides; let i = index" [ngClass]="{ 'active': i === currentIndex }">
+      <img [src]="slide.src" [alt]="slide.alt" [title]="slide.title" (dragstart)="preventDrag($event)">
+    </div>
+  </div>
+</div>
+    <!-- Footer with Navigation -->
+    <footer class="my-footer">
+        <div class="container">
+            <div class="site-info">
+                © 2023 <a href="javascript:void(0);"><strong><b>Rubik Trainer</b></strong></a>
+            </div>
+        </div>
+    </footer>

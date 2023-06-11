@@ -1,0 +1,54 @@
+.mainLogin {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+}
+.formulario {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+.ancho {
+    width: 15vw;
+}
+.register {
+    margin-top: 20px;
+}
+.submit {
+    border: 1px solid black;
+}
+.my-footer {
+    background-color: #333;
+    color: #fff;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100vw;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    z-index: 999;
+  }
+  
+  .my-footer .site-info a {
+    color: #fff;
+  }
+  @media (max-width: 1000px) {
+    .ancho {
+        width: 28vw;
+    }
+  }
+  @media (max-width: 1600px) {
+    .mainLogin {
+        height: 80vh;
+    }
+  }
+  @media (max-width: 500px) {
+    .ancho {
+        width: 52vw;
+    }
+  }

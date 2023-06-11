@@ -1,0 +1,31 @@
+<div id="mainTuto">
+  <button style="background-color: rgb(247, 47, 12);" (click)="handleClick('principiante')" id="Principiante"
+    class="solucionesButton round-button butt" mat-raised-button color="primary" id="slv"><b>PRINCIPIANTE</b>
+    <mat-icon>video_library</mat-icon>
+  </button>
+  <button style="background-color: rgb(51, 86, 247);" (click)="handleClick('avanzado')" id="Avanzado"
+    class="solucionesButton round-button butt" mat-raised-button color="primary" id="slv"><b>AVANZADO</b>
+    <mat-icon>video_library</mat-icon>
+  </button>
+  <button style="background-color: rgb(126, 126, 126);" (click)="handleClick('experto')" id="Experto"
+    class="solucionesButton round-button butt" [disabled]="isButtonDisabled" mat-raised-button color="primary"
+    id="slv"><b>EXPERTO</b>
+    <mat-icon>video_library</mat-icon>
+  </button>
+  <div *ngIf="loaded == 'principiante'">
+    <div *ngFor="let video of listaTutorial[loaded] ;let i = index" class="vids">
+      <h1><b>Parte {{i+1}}</b></h1>
+      <iframe class="tutorialVids" width="560" height="315" [src]="sanitizer.bypassSecurityTrustResourceUrl(video)"
+        title="YouTube video player" frameborder="0" allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+  <div *ngIf="loaded == 'avanzado'">
+    <div *ngFor="let video of listaTutorial[loaded] ;let i = index" class="vids">
+      <h1><b>Parte {{i+1}}</b></h1>
+      <iframe class="tutorialVids" width="560" height="315" [src]="sanitizer.bypassSecurityTrustResourceUrl(video)"
+        title="YouTube video player" frameborder="0" allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</div>

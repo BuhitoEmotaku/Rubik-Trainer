@@ -1,0 +1,43 @@
+#mainTuto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 237, 132);
+    flex-wrap: wrap;
+    min-height: 100vh;
+  }
+
+  #mainTuto > .tutorialVids {
+      padding: 8px;
+      top: 0;
+      left: 0;
+      max-width: 80%;
+      height: 100%;
+      
+  }
+  .butt {
+    margin: 10px;
+  }
+  iframe {
+    border: 2px solid red;
+  }
+  .vids h1 {
+    text-align: center;
+    padding: 10px;
+    margin: 30px;
+    color: rgb(0, 0, 0);
+    background-color:rgb(236, 159, 255) ;
+    border-radius: 20px;
+  }
+
+  @media (max-width: 600px) {
+    .tutorialVids {
+      width: 70vw;
+      
+    }
+    iframe {
+      width: 400px;
+      height: 200px;
+    }
+  }
